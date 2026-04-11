@@ -1,0 +1,8 @@
+[
+  { "id": 1, "name": "Ana López",    "region": "norte", "status": "active",   "amount": 1200.50 },
+  { "id": 2, "name": "Carlos Ruiz",  "region": "sur",   "status": "inactive", "amount":  850.00 },
+  { "id": 3, "name": "María Torres", "region": "norte", "status": "active",   "amount":  430.75 },
+  { "id": 4, "name": "Luis Pérez",   "region": "centro","status": "active",   "amount":  990.00 },
+  { "id": 5, "name": "Elena Mora",   "region": "sur",   "status": "active",   "amount":  300.20 },
+  { "id": 6, "name": "Jorge Díaz",   "region": "centro","status": "inactive", "amount":  500.00 }
+]
