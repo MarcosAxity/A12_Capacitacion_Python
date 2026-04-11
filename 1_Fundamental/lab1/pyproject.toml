@@ -1,0 +1,46 @@
+[project]
+name = "lab1"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "Marcos Olguin", email = "marcos.olguin@axity.com"}
+]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+
+[tool.poetry.group.dev.dependencies]
+black = "^24.0.0"
+isort = "^5.13.0"
+ruff = "^0.1.0"
+pre-commit = "^3.6.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
+
+# Configuración de black
+[tool.black]
+line-length = 100
+target-version = ['py312']
+include = '\.pyi?$'
+
+# Configuración de isort
+[tool.isort]
+profile = "black"
+line_length = 100
+multi_line_output = 3
+
+# Configuración de ruff
+[tool.ruff]
+line-length = 100
+select = [
+    "E",  # pycodestyle errors
+    "W",  # pycodestyle warnings
+    "F",  # pyflakes
+    "I",  # isort
+    "N",  # pep8-naming
+]
+ignore = []
+target-version = "py312"
