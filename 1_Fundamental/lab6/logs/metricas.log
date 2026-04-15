@@ -1,0 +1,17 @@
+2026-04-14 10:32:27,343 - INFO - CSV de ejemplo creado: datos/personas.csv
+2026-04-14 10:32:27,343 - INFO - ==================================================
+2026-04-14 10:32:27,343 - INFO - INICIO DEL PROCESAMIENTO
+2026-04-14 10:32:27,343 - INFO - ==================================================
+2026-04-14 10:32:27,343 - INFO - Iniciando lectura de CSV: personas.csv
+2026-04-14 10:32:27,343 - DEBUG - Ruta absoluta: /Users/marcos/Documents/git/A12_Capacitacion_Python/1_Fundamental/lab6/datos/personas.csv
+2026-04-14 10:32:27,343 - INFO - ✓ CSV leído correctamente: 5 filas
+2026-04-14 10:32:27,343 - DEBUG - Columnas encontradas: ['nombre', 'edad', 'ciudad']
+2026-04-14 10:32:27,343 - INFO - Calculando métricas para columna: edad
+2026-04-14 10:32:27,343 - INFO - ✓ Métricas calculadas: promedio=31.20, min=22.0, max=41.0
+2026-04-14 10:32:27,343 - DEBUG - Métricas completas: {'total_registros': 5, 'valores_validos': 5, 'suma': 156.0, 'promedio': 31.2, 'minimo': 22.0, 'maximo': 41.0, 'columna_analizada': 'edad'}
+2026-04-14 10:32:27,343 - INFO - Exportando resultados a: metricas_personas.json
+2026-04-14 10:32:27,343 - INFO - ✓ JSON exportado correctamente: /Users/marcos/Documents/git/A12_Capacitacion_Python/1_Fundamental/lab6/output/metricas_personas.json
+2026-04-14 10:32:27,343 - DEBUG - Tamaño del archivo: 698 bytes
+2026-04-14 10:32:27,343 - INFO - ==================================================
+2026-04-14 10:32:27,343 - INFO - PROCESAMIENTO COMPLETADO EXITOSAMENTE
+2026-04-14 10:32:27,343 - INFO - ==================================================

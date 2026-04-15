@@ -1,0 +1,5 @@
+2026-04-14 10:17:17,792 - __main__ - INFO - Operación completada
+2026-04-14 10:17:17,794 - __main__ - WARNING - Advertencia: recurso bajo
+2026-04-14 10:17:17,795 - __main__ - ERROR - Error al procesar archivo
+NoneType: None
+2026-04-14 10:17:17,796 - __main__ - CRITICAL - Fallo crítico del sistema

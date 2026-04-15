@@ -1,0 +1,20 @@
+# Instalar dependencias
+poetry install
+
+# Instalar pre-commit
+poetry run pre-commit install
+
+# Ejecutar mypy
+poetry run mypy src/
+
+# Ejecutar ruff
+poetry run ruff check src/
+
+# Formatear código
+poetry run ruff format src/
+
+# Ejecutar tests
+poetry run pytest -v
+
+# Ejecutar todo (pre-commit)
+poetry run pre-commit run --all-files

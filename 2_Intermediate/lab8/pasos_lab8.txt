@@ -1,0 +1,56 @@
+# --- Estructura del proyecto ---
+
+proyecto_ordenes/
+├── models.py         # Modelos SQLAlchemy
+├── crud.py           # Operaciones CRUD
+├── alembic.ini       # Configuración Alembic
+├── alembic/
+│   ├── env.py
+│   └── versions/
+└── test_app.py       # Pruebas con SQLite en memoria
+
+
+# --- Pasos para ejecutar el laboratorio ---
+
+pip install alembic sqlalchemy
+alembic init alembic
+
+# Editar alembic.ini
+sqlalchemy.url = sqlite:///ordenes.db
+
+# Crear la primera migracion
+alembic revision --autogenerate -m "crear tablas users, orders, order_items"
+
+# Aplicar la migracion
+alembic upgrade head
+
+# Ejecutar pruebas
+python test_app.py
+
+
+# --- Resumen ---
+
+Modelos implementados:
+- User: usuario con nombre y email
+- Order: orden asociada a un usuario con total calculado
+- OrderItem: items de productos con cantidad, precio y subtotal
+
+Relaciones:
+- User → Order (uno a muchos)
+- Order → OrderItem (uno a muchos)
+- Cascade delete configurado para eliminar órdenes e items al eliminar usuario
+
+CRUD completo:
+- Create, Read, Update, Delete para cada entidad
+- Cálculo automático de totales
+- Actualización de items con recálculo de orden
+
+Migraciones:
+- Configuración de Alembic
+- Generación automática de migraciones
+- Versionado del esquema
+
+Pruebas:
+- SQLite en memoria para pruebas rápidas
+- Validación de todas las operaciones CRUD
+- Verificación de relaciones y cascadas

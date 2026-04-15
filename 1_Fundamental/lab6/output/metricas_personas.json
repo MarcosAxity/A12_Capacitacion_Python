@@ -1,0 +1,40 @@
+{
+  "timestamp": "2026-04-14T10:32:27.343529",
+  "metricas": {
+    "total_registros": 5,
+    "valores_validos": 5,
+    "suma": 156.0,
+    "promedio": 31.2,
+    "minimo": 22.0,
+    "maximo": 41.0,
+    "columna_analizada": "edad"
+  },
+  "total_datos": 5,
+  "muestra_datos": [
+    {
+      "nombre": "Ana",
+      "edad": "28",
+      "ciudad": "Madrid"
+    },
+    {
+      "nombre": "Carlos",
+      "edad": "35",
+      "ciudad": "Barcelona"
+    },
+    {
+      "nombre": "María",
+      "edad": "22",
+      "ciudad": "Valencia"
+    },
+    {
+      "nombre": "Juan",
+      "edad": "41",
+      "ciudad": "Sevilla"
+    },
+    {
+      "nombre": "Laura",
+      "edad": "30",
+      "ciudad": "Bilbao"
+    }
+  ]
+}

@@ -22,7 +22,8 @@ Contenidos clave:
 - IDEs: PyCharm y extensiones útiles, VS Code
 - Estructura de proyecto con pyproject.toml / requiremnents.txt
 - PEP 8 (estilo) y PEP 20 (Zen de Python); automatización con black, isort, ruff y pre-commit
-- Objetivos:
+
+Objetivos:
 - Instalar/gestionar versiones y entornos
 - Configurar IDE y herramientas de calidad
 - Aplicar PEP 8/PEP 20 y documentar excepciones locales
@@ -40,7 +41,8 @@ Contenidos clave:
 - Control de flujo (if, switch, for, while) y pattern matching
 - Errores y excepciones (try-except)
 - Control o gestión de excepciones
-- Objetivos:
+
+Objetivos:
 - Manejar estructuras de datos y control de flujo
 - Implementar manejo de errores robusto
 - Usar pattern matching en casos adecuados y expresiones regulares
@@ -56,7 +58,8 @@ Contenidos clave:
 - Lambdas, closures y decoradores
 - Iteradores, generadores, comprensiones
 - Context managers (with)
-- Objetivos:
+
+Objetivos:
 - Diseñar APIs de funciones claras y expresivas
 - Implementar decoradores y generadores útiles
 - Crear context managers para recursos
@@ -72,7 +75,8 @@ Contenidos clave:
 - Clases, herencia, composición, dunder methods
 - dataclasses y attrs
 - Pydantic para validación/serialización
-- Objetivos:
+
+Objetivos:
 - Modelar entidades con comportamientos y validaciones
 - Serializar y validar entradas/salidas
 
@@ -88,7 +92,8 @@ Contenidos clave:
 - mypy/pyright; límites del tipado dinámico
 - PEP 8 aplicado con ruff/black/isort; PEP 20 como guía de diseño
 - Pre-commit y checks en CI
-- Objetivos:
+
+Objetivos:
 - Anotar tipos y verificar estáticamente
 - Hacer cumplir PEP 8 y documentar excepciones
 - Integrar linters/formatters en CI
@@ -105,7 +110,8 @@ Contenidos clave:
 - datetime y zonas horarias
 - logging y configuración
 - subprocess y automatización
-- Objetivos:
+
+Objetivos:
 - Manipular archivos/rutas de forma segura
 - Configurar logging estructurado
 
@@ -119,7 +125,8 @@ Contenidos clave:
 - requests, aoihttp y httpx (http2)
 - Timeouts, reintentos, manejo de errores
 - Streaming de respuestas y uso eficiente de memoria
-- Objetivos:
+
+Objetivos:
 - Construir clientes HTTP robustos
 - Gestionar resiliencia y errores
 
@@ -136,7 +143,8 @@ Contenidos clave:
 - SQLAlchemy Core y ORM; relaciones y consultas
 - Migraciones con Alembic
 - Introducción a MongoDB (Motor)
-- Objetivos:
+
+Objetivos:
 - Modelar entidades y relaciones en ORM
 - Gestionar migraciones y transacciones
 
@@ -151,7 +159,8 @@ Laboratorio:
 - Esquemas Pydantic, validación y OpenAPI
 - Autenticación JWT, middlewares, CORS
 - Testing de endpoints con pytest + aiohttp
-- Objetivos:
+
+Objetivos:
 - Exponer una API coherente y validada
 - Asegurar endpoints y documentarlos
 
@@ -166,7 +175,8 @@ Laboratorio:
 - Mocking con unittest.mock
 - Property-based testing con Hypothesis
 - Cobertura e integración en CI
-- Objetivos:
+
+Objetivos:
 - Practicar TDD y diseñar pruebas confiables
 - Asegurar cobertura suficiente y suite estable
 
@@ -182,7 +192,8 @@ Laboratorio:
 - asyncio: event loop, async/await
 - multiprocessing para CPU-bound
 - Medición con timeit y cProfile
-- Objetivos:
+
+Objetivos:
 - Elegir el modelo de concurrencia apropiado
 - Implementar E/S concurrente y medir mejoras
 
@@ -196,7 +207,8 @@ Laboratorio:
 - SRP, OCP, LSP, ISP, DIP en clave “pythonic”
 - Inversión de dependencias con Protocols, factories y provider patterns
 - Acoplamiento, cohesión y testabilidad
-- Objetivos:
+
+Objetivos:
 - Aplicar SOLID a servicios y dominio
 - Reducir acoplamiento y mejorar extensibilidad
 
@@ -211,7 +223,8 @@ Laboratorio:
 - Estructurales: Adapter, Facade, Composite, Decorator, Proxy
 - Comportamiento: Strategy, Observer, Command, Mediator, Template Method, State
 - Patrones idiomáticos: decoradores, context managers, dataclasses
-- Objetivos:
+
+Objetivos:
 - Implementar patrones relevantes con ejemplos reales
 - Identificar antipatrones y señales de refactor
 
@@ -225,7 +238,8 @@ Laboratorio:
 - NumPy, Polars y Pandas
 - scikit-learn: modelos clásicos
 - Serialización de modelos e inferencia básica
-- Objetivos:
+
+Objetivos:
 - Manipular datos y entrenar un modelo simple
 - Exponer inferencia mínima
 
@@ -241,7 +255,8 @@ Laboratorio:
 - Casos de uso y orquestación; DTOs vs entidades
 - Inyección de dependencias y wiring en FastAPI
 - Pruebas de dominio, contrato y end-to-end
-- Objetivos:
+
+Objetivos:
 - Separar reglas de negocio de detalles de infraestructura
 - Definir puertos estables y adaptadores intercambiables
 
@@ -258,7 +273,8 @@ Laboratorio:
 - Reglas de dependencia y separación de capas
 - Unit of Work y eventos de dominio
 - Estrategias de migración hacia arquitectura limpia
-- Objetivos:
+
+Objetivos:
 - Estructurar un servicio con capas independientes y reglas claras
 - Gestionar transacciones y publicar eventos
 
@@ -273,7 +289,8 @@ Laboratorio:
 - Docker multistage y buenas prácticas
 - Pipelines en GitHub Actions/Azure DevOps
 - Despliegue en Azure (App Service, Container Apps, Functions)
-- Objetivos:
+
+Objetivos:
 - Empaquetar, contenerizar y automatizar pipelines
 - Publicar artefactos reproducibles
 
@@ -287,7 +304,8 @@ Laboratorio:
 - argparse, click y Typer
 - Configuración por variables de entorno
 - Scripts de mantenimiento
-- Objetivos:
+
+Objetivos:
 - Construir CLIs productivas y mantenibles
 - Integrar automatizaciones del proyecto
 
@@ -302,7 +320,8 @@ Laboratorio:
 - Auditoría de dependencias: pip-audit, safety
 - Actualizaciones (PEP 440) y compatibilidad
 - Hardening de contenedores y del runtime
-- Objetivos:
+
+Objetivos:
 - Proteger secretos y reducir superficie de riesgo
 - Mantener dependencias seguras y actualizadas
 
@@ -317,7 +336,8 @@ Laboratorio:
 - Servicios/clients gRPC en Python
 - Mensajería con RabbitMQ/Redis/Kafka
 - Serialización: JSON/Avro/Protobuf
-- Objetivos:
+
+Objetivos:
 - Definir contratos y comunicarse entre servicios heterogéneos
 - Integrar mensajería para eventos
 
