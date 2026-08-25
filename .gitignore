@@ -1,3 +1,47 @@
+# Bytecode / caché de Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyc
+*.pyo
+*.pyd
+
+# Caché de pytest
+.pytest_cache/
+.cache/
+
+# Cobertura de tests
+.coverage
+htmlcov/
+*.cover
+
+# Ambientes virtuales
+venv/
+env/
+ENV/
+.venv
+
+# Archivos de configuración
+.env
+*.env.local
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+
+# Distribución / empaquetado
+dist/
+build/
+*.egg-info/
+
+# Otros
 .DS_Store
 test.ipynb
-2_Intermediate/lab9
+__pycache__/
+
+
+2_Intermediate/lab12
+2_Intermediate/lab13
+2_Intermediate/lab14
+2_Intermediate/lab15
