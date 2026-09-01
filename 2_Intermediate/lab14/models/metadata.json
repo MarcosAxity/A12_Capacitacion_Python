@@ -1,0 +1,23 @@
+{
+  "columnas_features": [
+    "edad",
+    "antiguedad_meses",
+    "cargo_mensual",
+    "llamadas_soporte",
+    "tipo_contrato"
+  ],
+  "columnas_numericas": [
+    "edad",
+    "antiguedad_meses",
+    "cargo_mensual",
+    "llamadas_soporte"
+  ],
+  "columna_categorica": "tipo_contrato",
+  "columna_objetivo": "churn",
+  "clases": [
+    0,
+    1
+  ],
+  "accuracy_test": 0.7395,
+  "modelo": "RandomForestClassifier"
+}

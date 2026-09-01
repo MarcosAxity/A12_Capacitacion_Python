@@ -40,10 +40,5 @@ build/
 test.ipynb
 __pycache__/
 
-
-2_Intermediate/lab12
-2_Intermediate/lab13
-2_Intermediate/lab14
-2_Intermediate/lab15
 3_Advance
-4_Proyecto_Final
+orders_service
