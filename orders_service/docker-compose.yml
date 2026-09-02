@@ -1,0 +1,37 @@
+services:
+  db:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_USER: orders
+      POSTGRES_PASSWORD: orders
+      POSTGRES_DB: orders
+    ports:
+      - "5432:5432"
+    volumes:
+      - orders_db_data:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U orders"]
+      interval: 5s
+      timeout: 5s
+      retries: 10
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    environment:
+      ORDERS_DATABASE_URL: postgresql+asyncpg://orders:orders@db:5432/orders
+      ORDERS_JWT_SECRET_KEY: local-dev-secret-key-change-in-production
+      ORDERS_ENVIRONMENT: development
+      ORDERS_LOG_LEVEL: INFO
+      ORDERS_CORS_ORIGINS: '["*"]'
+    ports:
+      - "8000:8000"
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  orders_db_data:

@@ -1,0 +1,48 @@
+[project]
+name = "orders-service"
+version = "1.0.0"
+description = "Servicio de Orders con Arquitectura Hexagonal/Limpia - Proyecto final integrador"
+requires-python = ">=3.11"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-ra --strict-markers"
+markers = [
+    "unit: pruebas unitarias de dominio/aplicación",
+    "contract: pruebas de contrato de puertos/adaptadores",
+    "integration: pruebas de integración de la API",
+    "e2e: pruebas end-to-end del flujo completo",
+]
+filterwarnings = [
+    "ignore::DeprecationWarning:passlib.utils"
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+src = ["src", "tests"]
+extend-exclude = ["src/orders/infrastructure/db/migrations"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "C4"]
+ignore = ["B008"]  # B008: FastAPI usa Depends() como default de argumento a propósito
+
+[tool.ruff.lint.isort]
+known-first-party = ["orders"]
+
+[tool.mypy]
+python_version = "3.11"
+mypy_path = "src"
+explicit_package_bases = true
+ignore_missing_imports = true
+disallow_untyped_defs = true
+warn_unused_ignores = true
+warn_redundant_casts = true
+exclude = ["tests/", "src/orders/infrastructure/db/migrations/"]
+
+[[tool.mypy.overrides]]
+module = "orders.domain.*"
+disallow_any_generics = true
