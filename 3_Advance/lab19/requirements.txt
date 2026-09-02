@@ -1,0 +1,28 @@
+# ============================================================================
+# requirements.txt — dependencias de producción
+# ----------------------------------------------------------------------------
+# Versionado según PEP 440 (https://peps.python.org/pep-0440/):
+#
+#   ~=X.Y   "compatible release": acepta parches (>=X.Y, ==X.*)
+#           permite actualizaciones de PATCH automáticas (correcciones de
+#           bugs y seguridad) pero bloquea saltos de MINOR/MAJOR que podrían
+#           romper compatibilidad.
+#
+# Se fija el rango exacto validado en este laboratorio para reproducibilidad,
+# y se documenta en el README el procedimiento para subir de versión de
+# forma controlada (ver sección "Actualizaciones y compatibilidad").
+# ============================================================================
+
+fastapi~=0.141.1
+uvicorn[standard]~=0.34.3
+pydantic~=2.13.4
+pydantic-settings~=2.15.0
+httpx~=0.27.2
+
+# Pin explícito de una dependencia TRANSITIVA de fastapi.
+# Motivo (ver README, sección "Auditoría de dependencias"):
+#   pip-audit detectó 9 CVEs en starlette 0.46.2 (host-header spoofing,
+#   ReDoS en Range headers, SSRF vía UNC paths en Windows, bypass de
+#   verbo HTTP, entre otros). Se fija aquí para garantizar que ninguna
+#   resolución futura del solver vuelva a bajar a una versión vulnerable.
+starlette~=1.6.0

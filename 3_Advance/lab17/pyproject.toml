@@ -1,0 +1,50 @@
+[build-system]
+requires = ["hatchling>=1.24"]
+build-backend = "hatchling.build"
+
+[project]
+name = "orders-api"
+version = "0.1.0"
+description = "API de pedidos (Orders API) - Módulo 17: empaquetado, contenerización y CI/CD"
+readme = "README.md"
+requires-python = ">=3.11"
+license = { text = "MIT" }
+authors = [{ name = "Marcos" }]
+dependencies = [
+    "fastapi>=0.115,<1.0",
+    "uvicorn[standard]>=0.30,<1.0",
+    "pydantic>=2.7,<3.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=8.2",
+    "pytest-cov>=5.0",
+    "httpx>=0.27",
+    "ruff>=0.6",
+    "mypy>=1.11",
+    "build>=1.2",
+]
+
+[project.scripts]
+orders-api = "orders_api.main:run"
+
+[tool.hatch.build.targets.wheel]
+packages = ["src/orders_api"]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM"]
+
+[tool.mypy]
+python_version = "3.11"
+strict = true
+ignore_missing_imports = true
+mypy_path = "src"
+
+[tool.pytest.ini_options]
+addopts = "-v --cov=orders_api --cov-report=term-missing"
+testpaths = ["tests"]

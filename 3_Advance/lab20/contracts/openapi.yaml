@@ -1,0 +1,108 @@
+openapi: 3.0.3
+info:
+  title: Orders Service API
+  description: >
+    Contrato neutral (REST/OpenAPI) equivalente al servicio gRPC definido en
+    proto/orders.proto. Se usa cuando un cliente heterogéneo (frontend web,
+    partner externo) no puede o no quiere hablar gRPC directamente, pero
+    ambos contratos describen el mismo dominio.
+  version: "1.0.0"
+paths:
+  /orders:
+    post:
+      summary: Crear una orden
+      operationId: createOrder
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/CreateOrderRequest'
+      responses:
+        '201':
+          description: Orden creada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '400':
+          description: Solicitud inválida
+    get:
+      summary: Listar órdenes
+      operationId: listOrders
+      responses:
+        '200':
+          description: Lista de órdenes
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Order'
+  /orders/{orderId}:
+    get:
+      summary: Obtener una orden por id
+      operationId: getOrder
+      parameters:
+        - name: orderId
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Orden encontrada
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Order'
+        '404':
+          description: Orden no encontrada
+
+components:
+  schemas:
+    OrderItem:
+      type: object
+      required: [product_id, quantity, unit_price]
+      properties:
+        product_id:
+          type: string
+        quantity:
+          type: integer
+          minimum: 1
+        unit_price:
+          type: number
+          format: double
+
+    CreateOrderRequest:
+      type: object
+      required: [customer_id, items]
+      properties:
+        customer_id:
+          type: string
+        items:
+          type: array
+          minItems: 1
+          items:
+            $ref: '#/components/schemas/OrderItem'
+
+    Order:
+      type: object
+      properties:
+        order_id:
+          type: string
+        customer_id:
+          type: string
+        items:
+          type: array
+          items:
+            $ref: '#/components/schemas/OrderItem'
+        total_amount:
+          type: number
+          format: double
+        status:
+          type: string
+          enum: [PENDING, CONFIRMED, CANCELLED]
+        created_at:
+          type: string
+          format: date-time

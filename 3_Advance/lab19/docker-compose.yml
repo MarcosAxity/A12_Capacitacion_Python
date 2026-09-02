@@ -1,0 +1,47 @@
+# ============================================================================
+# docker-compose.yml — perfil de ejecución endurecido (hardening del runtime)
+# ----------------------------------------------------------------------------
+# Ejecutar:  docker compose up --build
+# ============================================================================
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: modulo19-seguridad:latest
+    ports:
+      - "8000:8000"
+
+    # --- Secretos y configuración -----------------------------------------
+    # Nunca se hornean en la imagen: se inyectan en runtime desde un
+    # archivo .env local (no versionado) o desde el gestor de secretos
+    # del orquestador real (Docker Swarm secrets, Kubernetes Secrets, etc.)
+    env_file:
+      - .env
+
+    # --- Hardening del runtime ------------------------------------------------
+    read_only: true                 # filesystem raíz de solo lectura
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=32m
+      - /app/tmp:rw,noexec,nosuid,size=16m
+    security_opt:
+      - no-new-privileges:true      # el proceso no puede escalar privilegios
+    cap_drop:
+      - ALL                        # se eliminan TODAS las capabilities de Linux...
+    cap_add:
+      - NET_BIND_SERVICE            # ...y se agrega solo la mínima necesaria
+    pids_limit: 100                 # límite de procesos: mitiga fork-bombs
+    mem_limit: 256m
+    cpus: 0.5
+    user: "10001:10001"             # refuerza el USER ya definido en la imagen
+
+    healthcheck:
+      test: ["CMD", "python", "-c",
+             "import urllib.request,sys; sys.exit(0) if urllib.request.urlopen('http://127.0.0.1:8000/health', timeout=2).status==200 else sys.exit(1)"]
+      interval: 30s
+      timeout: 3s
+      retries: 3
+      start_period: 5s
+
+    restart: unless-stopped

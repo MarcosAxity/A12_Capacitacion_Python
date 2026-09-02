@@ -1,0 +1,77 @@
+syntax = "proto3";
+
+// Paquete que aisla el namespace generado y evita colisiones con otros
+// contratos del ecosistema (buena práctica para contratos neutrales).
+package orders;
+
+// ---------------------------------------------------------------------------
+// Modelo de dominio compartido entre servicios (contrato, no implementación)
+// ---------------------------------------------------------------------------
+
+message OrderItem {
+  string product_id = 1;
+  int32 quantity = 2;
+  double unit_price = 3;
+}
+
+message Order {
+  string order_id = 1;
+  string customer_id = 2;
+  repeated OrderItem items = 3;
+  double total_amount = 4;
+  string status = 5;       // PENDING | CONFIRMED | CANCELLED
+  string created_at = 6;   // ISO-8601, string por neutralidad entre lenguajes
+}
+
+// ---------------------------------------------------------------------------
+// Mensajes de request/response del servicio gRPC (RPC = Remote Procedure Call)
+// ---------------------------------------------------------------------------
+
+message CreateOrderRequest {
+  string customer_id = 1;
+  repeated OrderItem items = 2;
+}
+
+message CreateOrderResponse {
+  Order order = 1;
+}
+
+message GetOrderRequest {
+  string order_id = 1;
+}
+
+message GetOrderResponse {
+  Order order = 1;
+}
+
+message ListOrdersRequest {}
+
+message ListOrdersResponse {
+  repeated Order orders = 1;
+}
+
+// ---------------------------------------------------------------------------
+// Evento de dominio publicado en el bus de mensajería (RabbitMQ/Redis/Kafka)
+// cuando se crea una orden. Se serializa como Protobuf binario para el bus,
+// pero el mismo "shape" se puede representar en JSON o Avro (ver
+// serialization/demo_serialization.py) porque el contrato es neutral al
+// formato de transporte.
+// ---------------------------------------------------------------------------
+
+message OrderCreatedEvent {
+  string event_id = 1;
+  string order_id = 2;
+  string customer_id = 3;
+  double total_amount = 4;
+  string occurred_at = 5;
+}
+
+// ---------------------------------------------------------------------------
+// Definición del servicio gRPC: el contrato que server y client comparten.
+// ---------------------------------------------------------------------------
+
+service OrdersService {
+  rpc CreateOrder(CreateOrderRequest) returns (CreateOrderResponse);
+  rpc GetOrder(GetOrderRequest) returns (GetOrderResponse);
+  rpc ListOrders(ListOrdersRequest) returns (ListOrdersResponse);
+}

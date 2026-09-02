@@ -1,0 +1,13 @@
+# ============================================================================
+# requirements-dev.txt — herramientas de testing, auditoría y mantenimiento
+# (no se instalan en la imagen Docker de producción)
+# ============================================================================
+
+-r requirements.txt
+
+pytest~=8.4.2
+pytest-cov~=6.3.0
+
+# Auditoría de dependencias (Módulo 19)
+pip-audit~=2.10.1
+safety~=3.8.1
